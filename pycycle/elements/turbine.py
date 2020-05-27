@@ -633,7 +633,7 @@ class Turbine(om.Group):
         self.connect("blds.n_out", "real_flow.init_prod_amounts")
 
         self.add_subsystem('FAR_passthru', PassThrough(
-            'Fl_I:FAR', 'Fl_O:FAR', 0.0), promotes=['*'])
+            'Fl_I:FAR', 'Fl_O:FAR', 1.0), promotes=['*'])
 
        # Calculate static properties
         if statics:
