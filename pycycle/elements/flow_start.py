@@ -37,9 +37,10 @@ class FlowStart(Group):
                            promotes_outputs=('Fl_O:tot:*',))
 
 
-        # if self.options['statics']: 
+        # if self.options['statics']:
         set_stat_MN = SetStatic(mode="MN", thermo_data=thermo_data,
                                 init_reacts=elements, fl_name="Fl_O:stat")
+        set_stat_MN.set_input_defaults('W', val=1.0, units='kg/s')
 
         self.add_subsystem('exit_static', set_stat_MN, promotes_inputs=('MN', 'W'),
                            promotes_outputs=('Fl_O:stat:*', ))
@@ -50,7 +51,7 @@ class FlowStart(Group):
         self.connect('totals.gamma', 'exit_static.guess:gamt')
 
 
-if __name__ == "__main__": 
+if __name__ == "__main__":
     from collections import OrderedDict
 
     from openmdao.api import Problem, IndepVarComp

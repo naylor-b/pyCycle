@@ -174,14 +174,14 @@ class MixedFlowTurbofan(om.Group):
         newton = self.nonlinear_solver = om.NewtonSolver()
         newton.options['atol'] = 1e-6
         newton.options['rtol'] = 1e-10
-        newton.options['iprint'] = 2
+        newton.options['iprint'] = 99
         newton.options['maxiter'] = 10
         newton.options['solve_subsystems'] = True
         newton.options['max_sub_solves'] = 100
         newton.options['reraise_child_analysiserror'] = False
         newton.linesearch = om.BoundsEnforceLS()
         newton.linesearch.options['bound_enforcement'] = 'scalar'
-        newton.linesearch.options['iprint'] = -1
+        newton.linesearch.options['iprint'] = 99
 
 
         self.linear_solver = om.DirectSolver(assemble_jac=True)
